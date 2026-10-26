@@ -1,4 +1,4 @@
-const CACHE_NAME = 'pattern-quest-v5';
+const CACHE_NAME = 'pattern-quest-v6';
 const APP_FILES = [
   './',
   './index.html',
@@ -18,6 +18,13 @@ self.addEventListener('activate', event => {
 });
 self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET' || new URL(event.request.url).origin !== self.location.origin) return;
+  if (event.request.mode === 'navigate') {
+    event.respondWith(fetch(event.request).then(response => {
+      if (!response.ok) return response;
+      return caches.open(CACHE_NAME).then(cache => cache.put(event.request, response.clone()).then(() => response));
+    }).catch(() => caches.match(event.request).then(cached => cached || caches.match('./index.html'))));
+    return;
+  }
   event.respondWith(caches.match(event.request).then(cached => cached || fetch(event.request).then(response => {
     if (response.ok) caches.open(CACHE_NAME).then(cache => cache.put(event.request, response.clone()));
     return response;
