@@ -1,4 +1,4 @@
-const CACHE_NAME = 'pattern-quest-v4';
+const CACHE_NAME = 'pattern-quest-v5';
 const APP_FILES = [
   './',
   './index.html',
