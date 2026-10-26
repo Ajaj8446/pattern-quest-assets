@@ -1,6 +1,7 @@
-const CACHE_NAME = 'pattern-quest-v2';
+const CACHE_NAME = 'pattern-quest-v3';
 const APP_FILES = [
-  './pattern-quest.html',
+  './',
+  './index.html',
   './manifest.webmanifest',
   './app-icon-180.png',
   './app-icon-512.png'
@@ -20,5 +21,5 @@ self.addEventListener('fetch', event => {
   event.respondWith(caches.match(event.request).then(cached => cached || fetch(event.request).then(response => {
     if (response.ok) caches.open(CACHE_NAME).then(cache => cache.put(event.request, response.clone()));
     return response;
-  }).catch(() => caches.match('./pattern-quest.html'))));
+  }).catch(() => caches.match('./index.html'))));
 });

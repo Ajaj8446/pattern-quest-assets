@@ -1,9 +1,9 @@
 {
-  "id": "./pattern-quest.html",
+  "id": "./",
   "name": "Pattern Quest — Learn Design Patterns",
   "short_name": "Pattern Quest",
   "description": "Learn Java and microservices design patterns with examples and challenges.",
-  "start_url": "./pattern-quest.html",
+  "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait-primary",
